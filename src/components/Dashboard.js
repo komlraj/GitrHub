@@ -29,18 +29,23 @@ class Dashboard extends Component {
           <div>
             <div className="dashboard">
               <div className="form">
-                <div className="form-inner">
-                  <form>
-                    <input
-                      name="username"
-                      type="text"
-                      className="input"
-                      placeholder="Enter User Name"
-                      onChange={this.handleChange}
-                    />
-                    <a href={`/user/${this.state.username}/profile`}>Search</a>
-                  </form>
-                </div>
+                <i class="fab fa-github" />
+                <form>
+                  <h1 id="tittle">GitHub User Search</h1>
+                  <input
+                    name="username"
+                    type="text"
+                    className="input"
+                    placeholder="&#128269; Enter User Name"
+                    onChange={this.handleChange}
+                  />
+                  <a
+                    className="search-button"
+                    href={`/user/${this.state.username}/profile`}
+                  >
+                    Search
+                  </a>
+                </form>
               </div>
             </div>
           </div>

@@ -30,7 +30,7 @@ class profile extends Component {
             <div />
           </div>
         ) : (
-          <div>
+          <div className="profile">
             {/* Header Part */}
             <div className="header-background">
               <div className="user-image">
