@@ -10,11 +10,11 @@ class profile extends Component {
   };
 
   render() {
-    const { userData } = this.props;
+    const { userData, userRepos } = this.props;
 
     return (
       <div>
-        {!userData ? (
+        {!userData && !userData ? (
           <div className="lds-spinner">
             <div />
             <div />
@@ -31,6 +31,7 @@ class profile extends Component {
           </div>
         ) : (
           <div>
+            {/* Header Part */}
             <div className="header-background">
               <div className="user-image">
                 <img
@@ -48,17 +49,55 @@ class profile extends Component {
                 </div>
                 <div className="user-info">
                   <div className="user-detail">
-                    <span>
-                      Repositories<span>{userData.public_repos}</span>
+                    <span className="tab active-tab">
+                      Repositories
+                      <span className="count">{userData.public_repos}</span>
                     </span>
-                    <span>
-                      Followers<span>{userData.followers}</span>
+                    <span className="tab">
+                      Followers
+                      <span className="count">{userData.followers}</span>
                     </span>
-                    <span>
-                      Following<span>{userData.following}</span>
+                    <span className="tab">
+                      Following
+                      <span className="count">{userData.following}</span>
                     </span>
                   </div>
                 </div>
+              </div>
+            </div>
+
+            {/* Body Part */}
+            <div className="container">
+              <div className="card-container">
+                {userRepos &&
+                  userRepos.map(repo => {
+                    return (
+                      <div key={repo.id} className="card">
+                        <div className="view-card">
+                          <button className="view-btn">View</button>
+                        </div>
+                        <div className="repo-card">
+                          <div className="card-navbar">
+                            <span>
+                              <i className="fas fa-eye icon" />
+                              <span className="count">{repo.watchers}</span>
+                            </span>
+                            <span>
+                              <i className="fas fa-star icon" />
+                              <span className="count">
+                                {repo.stargazers_count}
+                              </span>
+                            </span>
+                            <span>
+                              <i className="fas fa-code-branch icon" />
+                              <span className="count">{repo.forks}</span>
+                            </span>
+                          </div>
+                          <span className="card-title">{repo.name}</span>
+                        </div>
+                      </div>
+                    );
+                  })}
               </div>
             </div>
           </div>
